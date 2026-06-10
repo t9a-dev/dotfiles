@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+
 local function is_vim(pane)
 	local process = pane:get_foreground_process_name()
 	return process and process:find("n?vim") ~= nil
@@ -27,6 +28,15 @@ config.leader = {
 }
 
 config.keys = {
+	-- clear screen
+	{
+		key = "L",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SendKey({
+			key = "l",
+			mods = "CTRL",
+		}),
+	},
 	-- split panes
 	{
 		key = "\\",
@@ -41,7 +51,7 @@ config.keys = {
 
 	-- navigate panes
 	{ key = "h", mods = "CTRL", action = smart_pane_direction("Left", "h") },
-	{ key = "j", mods = "CTRL", action = smart_pane_direction("Down ", "j") },
+	{ key = "j", mods = "CTRL", action = smart_pane_direction("Down", "j") },
 	{ key = "k", mods = "CTRL", action = smart_pane_direction("Up", "k") },
 	{ key = "l", mods = "CTRL", action = smart_pane_direction("Right", "l") },
 
