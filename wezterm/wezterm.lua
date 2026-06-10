@@ -57,7 +57,7 @@ config.keys = {
 
 	-- pane controls
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+	{ key = "w", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 
 	-- send literal Ctrl+b to shell/programs
 	{
