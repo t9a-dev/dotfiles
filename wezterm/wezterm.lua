@@ -17,6 +17,7 @@ local function smart_pane_direction(direction, key)
 end
 
 local config = wezterm.config_builder()
+config.font = wezterm.font_with_fallback({ "UDEV Gothic 35NF", "FiraCode Nerd Font Mono" })
 config.font_size = 15
 config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = true
