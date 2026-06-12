@@ -1,20 +1,6 @@
 local wezterm = require("wezterm")
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 local act = wezterm.action
-
-local function is_vim(pane)
-	local process = pane:get_foreground_process_name()
-	return process and process:find("n?vim") ~= nil
-end
-
-local function smart_pane_direction(direction, key)
-	return wezterm.action_callback(function(window, pane)
-		if is_vim(pane) then
-			window:perform_action(act.SendKey({ key = key, mods = "CTRL" }), pane)
-		else
-			window:perform_action(act.ActivatePaneDirection(direction), pane)
-		end
-	end)
-end
 
 local config = wezterm.config_builder()
 config.font = wezterm.font_with_fallback({ "UDEV Gothic 35NF", "FiraCode Nerd Font Mono" })
@@ -27,6 +13,21 @@ config.leader = {
 	mods = "CTRL",
 	timeout_milliseconds = 1000,
 }
+-- you can put the rest of your Wezterm config here
+smart_splits.apply_to_config(config, {
+	-- https://github.com/mrjones2014/smart-splits.nvim#wezterm
+	direction_keys = {
+		move = { "h", "j", "k", "l" },
+		resize = { "LeftArrow", "DownArrow", "UpArrow", "RightArrow" },
+	},
+	-- modifier keys to combine with direction_keys
+	modifiers = {
+		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
+		resize = "META", -- modifier to use for pane resize, e.g. META+h to resize to the left
+	},
+	-- log level to use: info, warn, error
+	log_level = "info",
+})
 
 config.keys = {
 	-- clear screen
@@ -49,12 +50,6 @@ config.keys = {
 		mods = "LEADER",
 		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
-
-	-- navigate panes
-	{ key = "h", mods = "CTRL", action = smart_pane_direction("Left", "h") },
-	{ key = "j", mods = "CTRL", action = smart_pane_direction("Down", "j") },
-	{ key = "k", mods = "CTRL", action = smart_pane_direction("Up", "k") },
-	{ key = "l", mods = "CTRL", action = smart_pane_direction("Right", "l") },
 
 	-- resize mode
 	{
