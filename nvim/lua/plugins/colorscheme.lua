@@ -1,8 +1,10 @@
 return {
-  -- https://vimcolorschemes.com/r/rebelot/kanagawa.nvim
   {
-    "rebelot/kanagawa.nvim",
-    lazy = true,
-    opts = {},
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      style = "night",
+    },
   },
 }

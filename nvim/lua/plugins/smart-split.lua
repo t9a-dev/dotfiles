@@ -32,6 +32,8 @@ return {
         mode = { "n", "t" },
       },
     },
-    opts = {},
+    opts = {
+      multiplexer_option = "wezterm",
+    },
   },
 }
