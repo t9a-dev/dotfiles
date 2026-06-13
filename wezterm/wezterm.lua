@@ -13,22 +13,6 @@ config.leader = {
 	mods = "CTRL",
 	timeout_milliseconds = 1000,
 }
--- you can put the rest of your Wezterm config here
-smart_splits.apply_to_config(config, {
-	-- https://github.com/mrjones2014/smart-splits.nvim#wezterm
-	direction_keys = {
-		move = { "h", "j", "k", "l" },
-		resize = { "LeftArrow", "DownArrow", "UpArrow", "RightArrow" },
-	},
-	-- modifier keys to combine with direction_keys
-	modifiers = {
-		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
-		resize = "META", -- modifier to use for pane resize, e.g. META+h to resize to the left
-	},
-	-- log level to use: info, warn, error
-	log_level = "info",
-})
-
 config.keys = {
 	-- clear screen
 	{
@@ -83,5 +67,19 @@ config.key_tables = {
 		{ key = "q", action = "PopKeyTable" },
 	},
 }
+
+-- you can put the rest of your Wezterm config here
+smart_splits.apply_to_config(config, {
+	-- https://github.com/mrjones2014/smart-splits.nvim#wezterm
+	direction_keys = {
+		move = { "h", "j", "k", "l" },
+	},
+	-- modifier keys to combine with direction_keys
+	modifiers = {
+		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
+	},
+	-- log level to use: info, warn, error
+	log_level = "info",
+})
 
 return config
