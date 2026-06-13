@@ -3,7 +3,15 @@ return {
     "folke/snacks.nvim",
     opts = {
       picker = {
-        layout = { layout = { position = "right" } },
+        sources = {
+          explorer = {
+            layout = {
+              layout = {
+                position = "right",
+              },
+            },
+          },
+        },
         win = {
           input = {
             keys = {
