@@ -23,6 +23,7 @@ config.keys = {
 			mods = "CTRL",
 		}),
 	},
+	--
 	-- split panes
 	{
 		key = "\\",
@@ -54,6 +55,15 @@ config.keys = {
 		key = "b",
 		mods = "LEADER|CTRL",
 		action = act.SendKey({ key = "b", mods = "CTRL" }),
+	},
+
+	-- swap pane
+	{
+		key = "s",
+		mods = "LEADER",
+		action = act.PaneSelect({
+			mode = "SwapWithActive",
+		}),
 	},
 }
 
