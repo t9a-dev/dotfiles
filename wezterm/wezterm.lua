@@ -4,9 +4,28 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 config.font = wezterm.font_with_fallback({ "UDEV Gothic 35NF", "FiraCode Nerd Font Mono" })
-config.font_size = 13
 config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = true
+
+local function platform_font_size()
+	local target = wezterm.target_triple
+
+	if target:find("apple") then
+		return 14.5
+	end
+
+	if target:find("windows") then
+		return 13.0
+	end
+
+	if target:find("linux") then
+		return 13.0
+	end
+
+	return 14.0
+end
+
+config.font_size = platform_font_size()
 
 config.leader = {
 	key = "b",
