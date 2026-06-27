@@ -18,3 +18,13 @@ vim.keymap.set("n", "Q", "q", {
 vim.keymap.set("n", "<Leader>Q", "q", {
   desc = "Macro: start/stop recording",
 })
+
+-- Terminal
+vim.keymap.set("n", "<leader>tn", function()
+  vim.cmd("enew")
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end, { desc = "New Terminal in Current Window" })
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], {
+  desc = "Exit Terminal Mode",
+})
