@@ -1,10 +1,12 @@
 return {
   {
-    -- 文章入力時にbufferから候補を拾ってきて提案しないように
     "saghen/blink.cmp",
     opts = function(_, opts)
       opts.sources = opts.sources or {}
-      opts.sources.default = { "lsp", "path", "snippets" }
+
+      -- バッファ内の単語やスニペットを文章入力中に
+      -- 補完候補として表示しない
+      opts.sources.default = { "lsp", "path" }
     end,
   },
 }
