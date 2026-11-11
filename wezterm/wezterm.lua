@@ -6,6 +6,8 @@ local config = wezterm.config_builder()
 config.font = wezterm.font_with_fallback({ "UDEV Gothic 35NF", "FiraCode Nerd Font Mono" })
 config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = true
+-- https://wezterm.org/config/lua/config/term.html
+config.term = "wezterm"
 
 local function platform_font_size()
   local target = wezterm.target_triple
