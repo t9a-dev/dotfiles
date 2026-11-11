@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+local smart_splits = wezterm.plugin.require("https://github.com/smart-splits-nvim/backend-wezterm")
 local act = wezterm.action
 
 local config = wezterm.config_builder()
@@ -102,10 +102,12 @@ config.key_tables = {
 
 -- you can put the rest of your Wezterm config here
 smart_splits.apply_to_config(config, {
-	-- https://github.com/mrjones2014/smart-splits.nvim#wezterm
+	-- https://github.com/smart-splits-nvim/backend-wezterm
 	direction_keys = {
 		move = { "h", "j", "k", "l" },
 	},
+	-- ペインの端での挙動。smart-splits.nvim の move.at_edge (wrap) に合わせる
+	at_edge = "wrap",
 	-- modifier keys to combine with direction_keys
 	modifiers = {
 		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
