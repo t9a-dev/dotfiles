@@ -3,7 +3,9 @@ return {
     "olimorris/codecompanion.nvim",
     version = "^19.0.0",
     opts = {
-      language = "Japanese",
+      opts = {
+        language = "Japanese",
+      },
       adapters = {
         http = {
           extend = {
@@ -15,7 +17,6 @@ return {
           },
         },
       },
-
       interactions = {
         chat = {
           adapter = {
