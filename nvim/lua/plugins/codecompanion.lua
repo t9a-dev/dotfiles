@@ -23,6 +23,12 @@ return {
             name = "openrouter",
             model = "deepseek/deepseek-v4.1-flash-1017",
           },
+          sessions = {
+            enabled = true,
+            autosave = true,
+            continuous_save = true,
+            save_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "codecompanion", "sessions"),
+          },
         },
         inline = {
           adapter = {
